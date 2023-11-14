@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1CD370DD2B02F57300EFA7D6 /* tmdbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370DC2B02F57300EFA7D6 /* tmdbApp.swift */; };
-		1CD370DF2B02F57300EFA7D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370DE2B02F57300EFA7D6 /* ContentView.swift */; };
 		1CD370E12B02F57400EFA7D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD370E02B02F57400EFA7D6 /* Assets.xcassets */; };
 		1CD370E42B02F57400EFA7D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD370E32B02F57400EFA7D6 /* Preview Assets.xcassets */; };
 		1CD370EE2B02F57400EFA7D6 /* tmdbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370ED2B02F57400EFA7D6 /* tmdbTests.swift */; };
 		1CD370F82B02F57400EFA7D6 /* tmdbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370F72B02F57400EFA7D6 /* tmdbUITests.swift */; };
 		1CD370FA2B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370F92B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift */; };
+		1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		1CD370D92B02F57300EFA7D6 /* tmdb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tmdb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD370DC2B02F57300EFA7D6 /* tmdbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmdbApp.swift; sourceTree = "<group>"; };
-		1CD370DE2B02F57300EFA7D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1CD370E02B02F57400EFA7D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CD370E32B02F57400EFA7D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1CD370E92B02F57400EFA7D6 /* tmdbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tmdbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +78,7 @@
 				1CD3710A2B02F7C300EFA7D6 /* Resources */,
 				1CD371082B02F5CC00EFA7D6 /* Tests */,
 				1CD370DA2B02F57300EFA7D6 /* Products */,
+				1CD3710B2B03E4BF00EFA7D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				1CD371092B02F7AC00EFA7D6 /* Application */,
-				1CD370DE2B02F57300EFA7D6 /* ContentView.swift */,
 				1CD370E22B02F57400EFA7D6 /* Preview Content */,
 			);
 			path = tmdb;
@@ -151,6 +151,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		1CD3710B2B03E4BF00EFA7D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +174,9 @@
 			dependencies = (
 			);
 			name = tmdb;
+			packageProductDependencies = (
+				1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */,
+			);
 			productName = tmdb;
 			productReference = 1CD370D92B02F57300EFA7D6 /* tmdb.app */;
 			productType = "com.apple.product-type.application";
@@ -281,7 +291,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CD370DF2B02F57300EFA7D6 /* ContentView.swift in Sources */,
 				1CD370DD2B02F57300EFA7D6 /* tmdbApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +621,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DiscoverMovies;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CD370D12B02F57200EFA7D6 /* Project object */;
 }
