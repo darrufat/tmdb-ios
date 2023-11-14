@@ -1,10 +1,11 @@
+import DiscoverMovies
 import SwiftUI
 
 @main
 struct tmdbApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DiscoverMoviesView(viewModel: .init())
         }
     }
 }
