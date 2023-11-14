@@ -5,7 +5,7 @@ import SwiftUI
 struct tmdbApp: App {
     var body: some Scene {
         WindowGroup {
-            DiscoverMoviesView()
+            DiscoverMoviesView(viewModel: .init())
         }
     }
 }

@@ -2,33 +2,27 @@ import SwiftUI
 import Kingfisher
 
 struct MovieCellView: View {
-    var imageURL: URL?
-    var title: String
-    var rating: Double
-    var summary: String
+    let model: MovieModel
 
     var body: some View {
         HStack(alignment: .top) {
-            if let imageURL = imageURL {
+            if let imageURL = model.imageURL {
                 KFImage(imageURL)
                     .resizable()
-                    .placeholder {
-                        placeholderMovie
-                    }
+                    .placeholder { placeholderImage }
                     .aspectRatio(0.66, contentMode: .fit)
                     .cornerRadius(8)
             } else {
-                placeholderMovie
+                placeholderImage
             }
 
             VStack(alignment: .leading, spacing: 8) {
-                Text(title)
+                Text(model.title)
                     .font(.title)
                     .bold()
 
-                Text(summary)
+                Text(model.summary)
                     .font(.subheadline)
-                    .lineLimit(7)
                     .foregroundColor(.secondary)
 
                 Spacer()
@@ -36,16 +30,14 @@ struct MovieCellView: View {
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
-                    Text("\(rating, specifier: "%.1f")")
+                    Text("\(model.rating, specifier: "%.1f")")
                 }
             }
-
-            Spacer()
         }
-        .padding(.horizontal)
+        .padding()
     }
 
-    private var placeholderMovie: some View {
+    private var placeholderImage: some View {
         ZStack {
             Color.secondary
                 .opacity(0.3)
@@ -58,11 +50,6 @@ struct MovieCellView: View {
 }
 
 #Preview {
-    MovieCellView(
-        imageURL: URL(string: "https://example.com/image.jpg"),
-        title: "Ataque a los titanes",
-        rating: 9.1,
-        summary: "After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction."
-    )
-    .frame(height: 200)
+    MovieCellView(model: .placeholder)
+        .frame(height: 250)
 }

@@ -14,6 +14,7 @@
 		1CD370F82B02F57400EFA7D6 /* tmdbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370F72B02F57400EFA7D6 /* tmdbUITests.swift */; };
 		1CD370FA2B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370F92B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift */; };
 		1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */; };
+		1CD3710F2B03F9FD00EFA7D6 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD3710E2B03F9FD00EFA7D6 /* Common */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */,
+				1CD3710F2B03F9FD00EFA7D6 /* Common in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +178,7 @@
 			name = tmdb;
 			packageProductDependencies = (
 				1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */,
+				1CD3710E2B03F9FD00EFA7D6 /* Common */,
 			);
 			productName = tmdb;
 			productReference = 1CD370D92B02F57300EFA7D6 /* tmdb.app */;
@@ -626,6 +629,10 @@
 		1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiscoverMovies;
+		};
+		1CD3710E2B03F9FD00EFA7D6 /* Common */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Common;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

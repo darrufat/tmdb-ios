@@ -1,8 +1,8 @@
 import Foundation
 
-public enum ViewState<T> {
+public enum ViewState {
     case empty
     case loading
-    case loaded(T)
+    case loaded
     case failed(LocalizedError)
 }

@@ -1,19 +1,40 @@
 import SwiftUI
 
 public struct DiscoverMoviesView: View {
-    public init() {}
+    @ObservedObject var viewModel: DiscoverMoviesViewModel
+    public init(viewModel: DiscoverMoviesViewModel) {
+        self.viewModel = viewModel
+    }
 
     public var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            switch viewModel.state {
+            case .empty:
+                EmptyView() // TODO
+            case .loaded, .loading:
+                mainView
+            case .failed(let error):
+                Text(error.localizedDescription) // TODO
+            }
         }
-        .padding()
+    }
+
+    private var mainView: some View {
+        List {
+            ForEach(viewModel.movies) { movie in
+                MovieCellView(model: movie)
+                    .frame(height: 250)
+            }
+        }
+        .listStyle(.plain)
     }
 }
 
 #Preview {
-    DiscoverMoviesView()
+    DiscoverMoviesView(viewModel: .init(state: .loaded,
+                                        movies: [
+                                            .placeholder,
+                                            .placeholder,
+                                            .placeholder
+                                        ]))
 }
