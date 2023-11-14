@@ -1,3 +1,4 @@
+import Common
 import SwiftUI
 import Kingfisher
 
@@ -52,4 +53,6 @@ struct MovieCellView: View {
 #Preview {
     MovieCellView(model: .placeholder)
         .frame(height: 250)
+        .redacted(reason: .placeholder)
+        .shimmering()
 }

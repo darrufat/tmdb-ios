@@ -1,3 +1,4 @@
+import Common
 import SwiftUI
 
 public struct DiscoverMoviesView: View {
@@ -11,7 +12,11 @@ public struct DiscoverMoviesView: View {
             switch viewModel.state {
             case .empty:
                 EmptyView() // TODO
-            case .loaded, .loading:
+            case .loading:
+                mainView
+                    .redacted(reason: .placeholder)
+                    .shimmering()
+            case .loaded:
                 mainView
             case .failed(let error):
                 Text(error.localizedDescription) // TODO
@@ -31,7 +36,7 @@ public struct DiscoverMoviesView: View {
 }
 
 #Preview {
-    DiscoverMoviesView(viewModel: .init(state: .loaded,
+    DiscoverMoviesView(viewModel: .init(state: .loading,
                                         movies: [
                                             .placeholder,
                                             .placeholder,
