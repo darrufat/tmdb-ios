@@ -13,15 +13,16 @@ public struct DiscoverMoviesView: View {
             case .empty:
                 EmptyView() // TODO
             case .loading, .idle:
-                mainView
+                mainView([.placeholder, .placeholder, .placeholder])
                     .redacted(reason: .placeholder)
                     .shimmering()
             case .loaded:
-                mainView
+                mainView(viewModel.movies)
             case .failed(let error):
                 Text(error.localizedDescription) // TODO
             }
         }
+        .navigationTitle("TMDB")
         .onAppear {
             Task {
                 switch viewModel.state {
@@ -37,11 +38,25 @@ public struct DiscoverMoviesView: View {
         }
     }
 
-    private var mainView: some View {
+    private func mainView(_ movies: [MovieModel]) -> some View {
         List {
-            ForEach(viewModel.movies) { movie in
+            ForEach(movies) { movie in
                 MovieCellView(model: movie)
                     .frame(height: 250)
+                    .onAppear {
+                        guard movies.last?.id == movie.id else { return }
+                        Task {
+                            switch viewModel.state {
+                            case .loaded:
+                                try await viewModel.loadMore()
+                            case .loading, .failed, .idle, .empty:
+                                break
+                            }
+                        }
+                    }
+            }
+            if viewModel.isLoadingMore {
+                LoadingView()
             }
         }
         .listStyle(.plain)

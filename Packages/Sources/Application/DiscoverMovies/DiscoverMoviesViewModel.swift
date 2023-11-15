@@ -9,9 +9,12 @@ public final class DiscoverMoviesViewModel: ObservableObject {
 
     @Published var state: ViewState
     @Published var movies: [MovieModel]
+    var isLoadingMore = false
+    private var hasMoreMovies = true
+
     private var page = 1
 
-    public init(state: ViewState = .idle, movies: [MovieModel] = [.placeholder, .placeholder, .placeholder]) {
+    public init(state: ViewState = .idle, movies: [MovieModel] = []) {
         self.state = state
         self.movies = movies
     }
@@ -27,16 +30,31 @@ public final class DiscoverMoviesViewModel: ObservableObject {
     }
 
     @MainActor
+    func loadMore() async throws {
+        guard !isLoadingMore, hasMoreMovies else { return }
+        do {
+            isLoadingMore = true
+            try await loadDiscover(page: page)
+            page += 1
+        } catch {
+            // state = .failed(error) // TODO: handle error state
+        }
+        isLoadingMore = false
+    }
+
+    @MainActor
     func refresh() async {
         do {
             try await loadDiscover(page: 1)
+            page += 1
         } catch {}
     }
 
     @MainActor
     private func loadDiscover(page: Int) async throws {
         let entities = try await getDiscoveryMoviesUseCase(page: page)
-        movies = entities.map {
+        hasMoreMovies = !entities.isEmpty
+        let models: [MovieModel] = entities.map {
             .init(id: String($0.id),
                   imageURL: URL(string: $0.posterURL),
                   title: $0.title,
@@ -45,6 +63,12 @@ public final class DiscoverMoviesViewModel: ObservableObject {
                   year: $0.year
             )
         }
+        if isLoadingMore {
+            movies.append(contentsOf: models)
+        } else {
+            movies = models
+        }
+
         state = .loaded
         // TODO: handling empty states depending on pagination
         //state = data == nil ? .empty(emptyPlaceHolderModel) : .loaded
