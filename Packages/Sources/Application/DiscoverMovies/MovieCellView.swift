@@ -32,6 +32,13 @@ struct MovieCellView: View {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                     Text("\(model.rating, specifier: "%.1f")")
+
+                    if let year = model.year {
+                        Spacer()
+
+                        Text(String(year))
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
         }
