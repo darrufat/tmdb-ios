@@ -12,7 +12,7 @@ public struct DiscoverMoviesView: View {
             switch viewModel.state {
             case .empty:
                 EmptyView() // TODO
-            case .loading:
+            case .loading, .idle:
                 mainView
                     .redacted(reason: .placeholder)
                     .shimmering()
@@ -21,6 +21,19 @@ public struct DiscoverMoviesView: View {
             case .failed(let error):
                 Text(error.localizedDescription) // TODO
             }
+        }
+        .onAppear {
+            Task {
+                switch viewModel.state {
+                case .empty, .failed, .idle:
+                    await viewModel.load()
+                case .loaded, .loading:
+                    break
+                }
+            }
+        }
+        .refreshable {
+            await viewModel.refresh()
         }
     }
 

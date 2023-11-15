@@ -15,6 +15,8 @@
 		1CD370FA2B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370F92B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift */; };
 		1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */; };
 		1CD3710F2B03F9FD00EFA7D6 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD3710E2B03F9FD00EFA7D6 /* Common */; };
+		1CD371112B044DB900EFA7D6 /* Container+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD371102B044DB900EFA7D6 /* Container+Application.swift */; };
+		1CD371132B044DDB00EFA7D6 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD371122B044DDB00EFA7D6 /* Data */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 		1CD370F32B02F57400EFA7D6 /* tmdbUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tmdbUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD370F72B02F57400EFA7D6 /* tmdbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmdbUITests.swift; sourceTree = "<group>"; };
 		1CD370F92B02F57400EFA7D6 /* tmdbUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmdbUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1CD371102B044DB900EFA7D6 /* Container+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Application.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 			files = (
 				1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */,
 				1CD3710F2B03F9FD00EFA7D6 /* Common in Frameworks */,
+				1CD371132B044DDB00EFA7D6 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				1CD370DC2B02F57300EFA7D6 /* tmdbApp.swift */,
+				1CD371102B044DB900EFA7D6 /* Container+Application.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			packageProductDependencies = (
 				1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */,
 				1CD3710E2B03F9FD00EFA7D6 /* Common */,
+				1CD371122B044DDB00EFA7D6 /* Data */,
 			);
 			productName = tmdb;
 			productReference = 1CD370D92B02F57300EFA7D6 /* tmdb.app */;
@@ -294,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CD371112B044DB900EFA7D6 /* Container+Application.swift in Sources */,
 				1CD370DD2B02F57300EFA7D6 /* tmdbApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +640,10 @@
 		1CD3710E2B03F9FD00EFA7D6 /* Common */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Common;
+		};
+		1CD371122B044DDB00EFA7D6 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
