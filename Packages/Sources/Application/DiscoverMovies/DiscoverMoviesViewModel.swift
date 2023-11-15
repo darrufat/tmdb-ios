@@ -6,6 +6,7 @@ import Foundation
 
 public final class DiscoverMoviesViewModel: ObservableObject {
     @Injected(\.getDiscoveryMoviesUseCase) private var getDiscoveryMoviesUseCase
+    @Injected(\.discoverMoviesCoordinator) var coordinator
 
     @Published var state: ViewState
     @Published var movies: [MovieModel]

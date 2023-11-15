@@ -1,7 +1,7 @@
 import Common
 import Foundation
 
-public struct MovieModel: Identifiable {
+public struct MovieModel: Identifiable, Hashable {
     public let id: String
     var imageURL: URL?
     var title: String
