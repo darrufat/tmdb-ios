@@ -2,7 +2,7 @@ import Domain
 import Factory
 
 extension Container {
-    public var moviesRepository: Factory<MoviesRepository?> {
+    var moviesRepository: Factory<MoviesRepository?> {
         self { DefaultMoviesRepository() }
     }
 

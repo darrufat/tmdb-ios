@@ -39,27 +39,36 @@ public struct DiscoverMoviesView: View {
     }
 
     private func mainView(_ movies: [MovieModel]) -> some View {
-        List {
-            ForEach(movies) { movie in
-                MovieCellView(model: movie)
-                    .frame(height: 250)
-                    .onAppear {
-                        guard movies.last?.id == movie.id else { return }
-                        Task {
-                            switch viewModel.state {
-                            case .loaded:
-                                try await viewModel.loadMore()
-                            case .loading, .failed, .idle, .empty:
-                                break
+        NavigationStack {
+            List {
+                ForEach(movies) { movie in
+                    NavigationLink(value: movie) {
+                        MovieCellView(model: movie)
+                            .frame(height: 250)
+                            .onAppear {
+                                guard movies.last?.id == movie.id else { return }
+                                Task {
+                                    switch viewModel.state {
+                                    case .loaded:
+                                        try await viewModel.loadMore()
+                                    case .loading, .failed, .idle, .empty:
+                                        break
+                                    }
+                                }
                             }
-                        }
                     }
+                }
+                if viewModel.isLoadingMore {
+                    LoadingView()
+                }
             }
-            if viewModel.isLoadingMore {
-                LoadingView()
+            .navigationTitle("TMDB")
+            .navigationBarTitleDisplayMode(.large)
+            .navigationDestination(for: MovieModel.self) { model in
+                viewModel.coordinator.navigate(to: .detail(movieId: model.id))
             }
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
     }
 }
 

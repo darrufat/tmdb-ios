@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C6001D62B055D3F00678C8E /* MovieDetail in Frameworks */ = {isa = PBXBuildFile; productRef = 1C6001D52B055D3F00678C8E /* MovieDetail */; };
 		1CD370DD2B02F57300EFA7D6 /* tmdbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD370DC2B02F57300EFA7D6 /* tmdbApp.swift */; };
 		1CD370E12B02F57400EFA7D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD370E02B02F57400EFA7D6 /* Assets.xcassets */; };
 		1CD370E42B02F57400EFA7D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CD370E32B02F57400EFA7D6 /* Preview Assets.xcassets */; };
@@ -56,6 +57,7 @@
 			files = (
 				1CD3710D2B03E4BF00EFA7D6 /* DiscoverMovies in Frameworks */,
 				1CD3710F2B03F9FD00EFA7D6 /* Common in Frameworks */,
+				1C6001D62B055D3F00678C8E /* MovieDetail in Frameworks */,
 				1CD371132B044DDB00EFA7D6 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +187,7 @@
 				1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */,
 				1CD3710E2B03F9FD00EFA7D6 /* Common */,
 				1CD371122B044DDB00EFA7D6 /* Data */,
+				1C6001D52B055D3F00678C8E /* MovieDetail */,
 			);
 			productName = tmdb;
 			productReference = 1CD370D92B02F57300EFA7D6 /* tmdb.app */;
@@ -633,6 +636,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1C6001D52B055D3F00678C8E /* MovieDetail */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetail;
+		};
 		1CD3710C2B03E4BF00EFA7D6 /* DiscoverMovies */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DiscoverMovies;
