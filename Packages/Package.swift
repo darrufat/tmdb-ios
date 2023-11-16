@@ -84,7 +84,7 @@ let package = Package(
         ),
         .target(
             name: "Domain",
-            dependencies: ["Factory"],
+            dependencies: ["Common", "Factory"],
             path: "Sources/Application/Domain"
         ),
         .testTarget(

@@ -7,10 +7,12 @@ public protocol GetDiscoverMoviesUseCase {
 }
 
 public struct GetDiscoverMovies: GetDiscoverMoviesUseCase {
-    @Injected(\.moviesRepository) private var repository
+    @Injected(\.moviesRepository) private var moviesRepository
 
     public func callAsFunction(page: Int) async throws -> [MovieEntity] {
-        guard let repository else { throw NSError(domain: "Dependency missing", code: 1001) }
-        return try await repository.getDiscoveryMovies(page: page)
+        guard let moviesRepository else {
+            throw NSError(domain: "Dependency missing", code: 1001)
+        }
+        return try await moviesRepository.getDiscoveryMovies(page: page)
     }
 }

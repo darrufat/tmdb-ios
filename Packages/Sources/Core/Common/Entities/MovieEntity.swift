@@ -2,7 +2,7 @@ public struct MovieEntity {
     public let id: Int
     public let title: String
     public let overview: String
-    public let posterURL: String
+    public var posterPath: String
     public let year: Int?
     public let voteAverage: Float
 
@@ -10,7 +10,7 @@ public struct MovieEntity {
         self.id = id
         self.title = title
         self.overview = overview
-        self.posterURL = posterURL
+        self.posterPath = posterURL
         self.year = year
         self.voteAverage = voteAverage
     }

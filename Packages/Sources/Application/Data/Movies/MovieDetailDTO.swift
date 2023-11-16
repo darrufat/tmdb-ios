@@ -4,7 +4,6 @@ struct MovieDetailDTO: Decodable {
     let title: String
     let originalTitle: String
     let overview: String
-    let posterPath: String
     let releaseDate: String
     let voteAverage: Float
 
@@ -14,7 +13,6 @@ struct MovieDetailDTO: Decodable {
         case title
         case originalTitle = "original_title"
         case overview
-        case posterPath = "poster_path"
         case releaseDate = "release_date"
         case voteAverage = "vote_average"
     }
