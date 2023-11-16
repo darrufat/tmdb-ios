@@ -14,7 +14,7 @@ extension MovieModel: Redactable {
     public static var placeholder: MovieModel {
         .init(
             id: UUID().uuidString,
-            imageURL: URL(string: "https://example.com/image.jpg"),
+            imageURL: nil,
             title: "Attack on titan",
             summary: "After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.",
             rating: 9.1,

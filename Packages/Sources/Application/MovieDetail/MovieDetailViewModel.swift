@@ -9,7 +9,7 @@ public final class MovieDetailViewModel: ObservableObject {
 
     let movieId: String
     @Published var state: ViewState
-    @Published var detailModel: MovieDetailModel?
+    @Published var detailModel: MovieDetailModel = .placeholder
 
     public init(state: ViewState = .idle, movieId: String) {
         self.state = state
@@ -38,7 +38,6 @@ public final class MovieDetailViewModel: ObservableObject {
         let entity = try await getMovieDetailUseCase(id: movieId)
         detailModel = .init(id: String(entity.id),
                             backgroundImageURL: URL(string: entity.backgroundURL),
-                            imageURL: URL(string: entity.posterURL),
                             title: entity.title,
                             originalTitle: entity.originalTitle,
                             summary: entity.overview,

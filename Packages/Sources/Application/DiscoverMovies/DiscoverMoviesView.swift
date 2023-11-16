@@ -63,12 +63,11 @@ public struct DiscoverMoviesView: View {
                 }
             }
             .navigationTitle("TMDB")
-            .navigationBarTitleDisplayMode(.large)
             .navigationDestination(for: MovieModel.self) { model in
                 viewModel.coordinator.navigate(to: .detail(movieId: model.id))
             }
             .listStyle(.plain)
-        }
+        }.tint(.primary)
     }
 }
 

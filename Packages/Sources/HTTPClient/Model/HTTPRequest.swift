@@ -1,8 +1,10 @@
 import Foundation
 
-// TODO: add post, delete, patch...
 public enum HTTPRequestMethod: String {
     case GET
+    case POST
+    case DELETE
+    case PATCH
 }
 
 public struct HTTPRequest {
