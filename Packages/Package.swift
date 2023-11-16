@@ -67,7 +67,7 @@ let package = Package(
         ),
         .target(
             name: "MovieDetail",
-            dependencies: ["Kingfisher", "Domain"],
+            dependencies: ["Common", "Kingfisher", "Domain"],
             path: "Sources/Application/MovieDetail"),
         .testTarget(
             name: "MovieDetailTests",

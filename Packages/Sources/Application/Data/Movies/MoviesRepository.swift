@@ -72,7 +72,7 @@ extension DefaultMoviesRepository {
         return year
     }
 
-    // TODO: Get base image URL from config endpoint
+    // TODO: Get base image URL from config endpoint https://api.themoviedb.org/3/configuration
     private func formatImageURL(path: String) -> String {
         "https://image.tmdb.org/t/p/w500".appending(path)
     }

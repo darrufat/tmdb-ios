@@ -4,7 +4,6 @@ import Foundation
 struct MovieDetailModel {
     public let id: String
     var backgroundImageURL: URL?
-    var imageURL: URL?
     var title: String
     var originalTitle: String
     var summary: String
@@ -17,8 +16,7 @@ extension MovieDetailModel: Redactable {
         .init(
             id: UUID().uuidString,
             backgroundImageURL: .none,
-            imageURL: URL(string: "https://example.com/image.jpg"),
-            title: "Attack on titan",
+            title: "",
             originalTitle: "Shingeki no Kyojin",
             summary: "After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.",
             rating: 9.1,

@@ -1,6 +1,6 @@
 import Common
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct MovieCellView: View {
     let model: MovieModel
