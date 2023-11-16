@@ -5,4 +5,7 @@ extension Container {
     public var getDiscoveryMoviesUseCase: Factory<GetDiscoverMoviesUseCase> {
         self { GetDiscoverMovies() }
     }
+    public var getMovieDetailUseCase: Factory<GetMovieDetailUseCase> {
+        self { GetMovieDetail() }
+    }
 }

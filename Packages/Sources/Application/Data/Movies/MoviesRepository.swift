@@ -11,8 +11,7 @@ struct DefaultMoviesRepository: MoviesRepository {
         let dto = try await fetchDiscoveryMovies(page: page)
         return dto.results.map {
             .init(id: $0.id,
-                  backgroundURL: formatImageURL(path: $0.backdropPath),
-                  title: $0.originalTitle,
+                  title: $0.title,
                   overview: $0.overview,
                   posterURL: formatImageURL(path: $0.posterPath),
                   year: mapYear(releaseDate: $0.releaseDate),
@@ -20,7 +19,21 @@ struct DefaultMoviesRepository: MoviesRepository {
         }
     }
 
-    // To be moved to a NetworkDataSource if you need more data sources (local, memory...)
+    func getDetail(id: String) async throws -> MovieDetailEntity {
+        let dto = try await fetchDetail(id: id)
+        return MovieDetailEntity(id: dto.id,
+                                 backgroundURL: formatImageURL(path: dto.backdropPath),
+                                 title: dto.title,
+                                 originalTitle: dto.originalTitle,
+                                 overview: dto.overview,
+                                 posterURL: formatImageURL(path: dto.posterPath),
+                                 year: mapYear(releaseDate: dto.releaseDate),
+                                 voteAverage: dto.voteAverage)
+    }
+}
+
+// To be moved to a NetworkDataSource if you need more data sources (local, memory...)
+extension DefaultMoviesRepository {
     private func fetchDiscoveryMovies(page: Int) async throws -> MoviesDTO {
         guard let url = NetworkSettings.baseURL else {
             throw HTTPClientError.invalidURL
@@ -35,6 +48,18 @@ struct DefaultMoviesRepository: MoviesRepository {
 
         guard let data = response.data else { throw HTTPClientError.response(response) }
         return try JSONDecoder().decode(MoviesDTO.self, from: data)
+    }
+
+    private func fetchDetail(id: String) async throws -> MovieDetailDTO {
+        guard let url = NetworkSettings.baseURL else {
+            throw HTTPClientError.invalidURL
+        }
+        let request = HTTPRequest(url: url.appendingPathComponent("movie/\(id)"),
+                                  method: .GET,
+                                  params: ["api_key": NetworkSettings.apiKey])
+        let response = try await httpClient.fetch(request: request)
+        guard let data = response.data else { throw HTTPClientError.response(response) }
+        return try JSONDecoder().decode(MovieDetailDTO.self, from: data)
     }
 
     private func mapYear(releaseDate: String) -> Int? {

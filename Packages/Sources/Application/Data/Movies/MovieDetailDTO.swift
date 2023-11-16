@@ -1,18 +1,8 @@
-struct MoviesDTO: Decodable {
-    let page: Int
-    let totalPages: Int
-    let results: [MovieDTO]
-
-    enum CodingKeys: String, CodingKey {
-        case page
-        case totalPages = "total_pages"
-        case results
-    }
-}
-
-struct MovieDTO: Decodable {
+struct MovieDetailDTO: Decodable {
     let id: Int
+    let backdropPath: String
     let title: String
+    let originalTitle: String
     let overview: String
     let posterPath: String
     let releaseDate: String
@@ -20,7 +10,9 @@ struct MovieDTO: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case id
+        case backdropPath = "backdrop_path"
         case title
+        case originalTitle = "original_title"
         case overview
         case posterPath = "poster_path"
         case releaseDate = "release_date"

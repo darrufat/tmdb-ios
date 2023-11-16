@@ -13,7 +13,7 @@ public final class DiscoverMoviesViewModel: ObservableObject {
     var isLoadingMore = false
     private var hasMoreMovies = true
 
-    private var page = 1
+    private var currentPage = 1
 
     public init(state: ViewState = .idle, movies: [MovieModel] = []) {
         self.state = state
@@ -24,7 +24,8 @@ public final class DiscoverMoviesViewModel: ObservableObject {
     func load() async {
         state = .loading
         do {
-            try await loadDiscover(page: page)
+            try await loadDiscover(page: 1)
+            currentPage = 1
         } catch {
             //state = .failed(error) // TODO: handle error state
         }
@@ -35,8 +36,8 @@ public final class DiscoverMoviesViewModel: ObservableObject {
         guard !isLoadingMore, hasMoreMovies else { return }
         do {
             isLoadingMore = true
-            try await loadDiscover(page: page)
-            page += 1
+            try await loadDiscover(page: currentPage+1)
+            currentPage += 1
         } catch {
             // state = .failed(error) // TODO: handle error state
         }
@@ -47,7 +48,7 @@ public final class DiscoverMoviesViewModel: ObservableObject {
     func refresh() async {
         do {
             try await loadDiscover(page: 1)
-            page += 1
+            currentPage = 1
         } catch {}
     }
 
