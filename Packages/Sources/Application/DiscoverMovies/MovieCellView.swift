@@ -42,7 +42,6 @@ struct MovieCellView: View {
                 }
             }
         }
-        .padding()
     }
 
     private var placeholderImage: some View {
