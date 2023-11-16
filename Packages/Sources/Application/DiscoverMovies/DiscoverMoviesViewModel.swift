@@ -5,6 +5,7 @@ import Factory
 import Foundation
 
 public final class DiscoverMoviesViewModel: ObservableObject {
+    @Injected(\.getImageConfigurationUseCase) private var getImageConfigurationUseCase
     @Injected(\.getDiscoveryMoviesUseCase) private var getDiscoveryMoviesUseCase
     @Injected(\.discoverMoviesCoordinator) var coordinator
 
@@ -54,11 +55,12 @@ public final class DiscoverMoviesViewModel: ObservableObject {
 
     @MainActor
     private func loadDiscover(page: Int) async throws {
+        let imageConfig = try await getImageConfigurationUseCase()
         let entities = try await getDiscoveryMoviesUseCase(page: page)
         hasMoreMovies = !entities.isEmpty
         let models: [MovieModel] = entities.map {
             .init(id: String($0.id),
-                  imageURL: URL(string: $0.posterURL),
+                  imageURL: URL(string: imageConfig.getHighestQualityPosterImageURL(path: $0.posterPath)),
                   title: $0.title,
                   summary: $0.overview,
                   rating: $0.voteAverage,

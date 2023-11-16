@@ -13,7 +13,7 @@ struct DefaultMoviesRepository: MoviesRepository {
             .init(id: $0.id,
                   title: $0.title,
                   overview: $0.overview,
-                  posterURL: formatImageURL(path: $0.posterPath),
+                  posterURL: $0.posterPath,
                   year: mapYear(releaseDate: $0.releaseDate),
                   voteAverage: $0.voteAverage)
         }
@@ -22,11 +22,10 @@ struct DefaultMoviesRepository: MoviesRepository {
     func getDetail(id: String) async throws -> MovieDetailEntity {
         let dto = try await fetchDetail(id: id)
         return MovieDetailEntity(id: dto.id,
-                                 backgroundURL: formatImageURL(path: dto.backdropPath),
+                                 backgroundURL: dto.backdropPath,
                                  title: dto.title,
                                  originalTitle: dto.originalTitle,
                                  overview: dto.overview,
-                                 posterURL: formatImageURL(path: dto.posterPath),
                                  year: mapYear(releaseDate: dto.releaseDate),
                                  voteAverage: dto.voteAverage)
     }
@@ -70,10 +69,5 @@ extension DefaultMoviesRepository {
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
         return year
-    }
-
-    // TODO: Get base image URL from config endpoint https://api.themoviedb.org/3/configuration
-    private func formatImageURL(path: String) -> String {
-        "https://image.tmdb.org/t/p/w500".appending(path)
     }
 }
